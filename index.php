@@ -2,7 +2,7 @@
 
 require_once "vendor/autoload.php";
 
-$user = new \Hillel\Models\User();
+$user = new \Hillel\HomeWork\Models\User();
 
 print $user->get();
 

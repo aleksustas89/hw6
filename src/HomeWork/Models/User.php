@@ -1,6 +1,6 @@
 <?php
 
-namespace Hillel\Models;
+namespace Hillel\HomeWork\Models;
 
 class User
 {

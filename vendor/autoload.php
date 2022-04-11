@@ -31,12 +31,15 @@ class Autoloader
 
         foreach ($this->prefixes as $k => $base_dir) {
 
-            $file = str_replace("\\", "/", str_replace($k, $base_dir[0], $class))
+            $path = str_replace(mb_strtolower($k), $base_dir[0], mb_strtolower($class)); 
+
+            $file = str_replace("\\", "/", $path)
                     . '.php';
 
             if ($this->requireFile($file)) {
                 return $file;
             }
+         
         }
 
         return false;
@@ -54,6 +57,6 @@ class Autoloader
 }
 
 $autoloader = new Autoloader();
-$autoloader->addNamespace('Hillel', 'src');
+$autoloader->addNamespace('Hillel\HomeWork', 'src');
 $autoloader->addNamespace('My', 'src2');
 $autoloader->register();

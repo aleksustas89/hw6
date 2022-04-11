@@ -1,31 +1,38 @@
 version: '3'
 
 services:
-  homework6:
+  homework:
     build: .
     ports:
       - "80:80"
     volumes: 
       - .:/var/www/html
     networks:
-      - my-network6
+      - my-network
     
   db: 
     image: mysql:8.0.28
     environment:
       MYSQL_ROOT_PASSWORD: secret
     networks:
-      - my-network6
+      - my-network
 
   phpmyadmin:
     image: phpmyadmin:5.1.3
     restart: always
     ports:
-      - 8084:80
+      - 8083:80
     networks:
-      - my-network6
+      - my-network
+
+  composer:
+    image: composer:2.3.4
+    volumes: 
+      - .:/app
+    networks:
+      - my-network
 
 
 networks:
-  my-network6: 
+  my-network: 
     driver: bridge

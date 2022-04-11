@@ -18,7 +18,6 @@ class Autoloader
         }
 
         array_push($this->prefixes[$prefix], $dir);
-        
     }
 
     public function register()
@@ -31,19 +30,17 @@ class Autoloader
 
         foreach ($this->prefixes as $k => $base_dir) {
 
-            $path = str_replace(mb_strtolower($k), $base_dir[0], mb_strtolower($class)); 
+            $path = str_replace(mb_strtolower($k), $base_dir[0], mb_strtolower($class));
 
             $file = str_replace("\\", "/", $path)
-                    . '.php';
+                . '.php';
 
             if ($this->requireFile($file)) {
                 return $file;
             }
-         
         }
 
         return false;
-
     }
 
     protected function requireFile($file)
